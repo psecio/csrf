@@ -4,10 +4,13 @@ namespace Psecio\Csrf;
 
 class Token
 {
-	public static function generate()
+	public function generate($type, array $options = array())
 	{
-		$token = null;
-
-		return $token;
+		$tokenClass = "\\Psecio\\Csrf\\Token\\".ucwords(strtolower($type));
+		if (class_exists($tokenClass) === true) {
+			$token = new $tokenClass();
+			return $token->generate($options);
+		}
+		return false;
 	}
 }
