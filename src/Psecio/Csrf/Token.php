@@ -10,6 +10,8 @@ class Token
 		if (class_exists($tokenClass) === true) {
 			$token = new $tokenClass();
 			return $token->generate($options);
+		} else {
+			throw new \InvalidArgumentException('Invalid token type '.$type);
 		}
 		return false;
 	}
