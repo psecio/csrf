@@ -1,0 +1,23 @@
+{
+    "name":"psecio/csrf",
+    "type":"library",
+    "description":"CSRF Token Generation Library",
+    "keywords":["csrf","token","security"],
+    "homepage":"https://github.com/psecio/csrf.git",
+    "license":"MIT",
+    "authors":[
+        {
+            "name":"Chris Cornutt",
+            "email":"ccornutt@phpdeveloper.org",
+            "homepage":"http://www.phpdeveloper.org/"
+        }
+    ],
+    "require":{
+        "php":">=5.3.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "Psecio": "src/"
+        }
+    }
+}
