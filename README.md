@@ -43,3 +43,9 @@ echo 'token: '.var_export($token, true)."\n";
 *Optons:*
 
 - method: [bcrypt, openssl, sha256]
+
+**file**
+
+*Options:*
+
+- path
