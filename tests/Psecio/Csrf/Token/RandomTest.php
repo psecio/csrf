@@ -11,6 +11,10 @@ class RandomTest extends \PHPUnit_Framework_TestCase
 		$this->token = new \Psecio\Csrf\Token\Random();
 	}
 
+	/**
+	 * Validate that a good sha256 hash is generated
+	 * @covers \Psecio\Csrf\Token\Random::generate
+	 */
 	public function testGenerateSha256Valid()
 	{
 		$options = array(
