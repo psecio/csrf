@@ -35,3 +35,11 @@ $token = \Psecio\Csrf\Token::generate('random', $options);
 echo 'token: '.var_export($token, true)."\n";
 ?>
 ```
+
+#### Valid types and options:
+
+**random**
+
+*Optons:*
+
+- method: [bcrypt, openssl, sha256]
