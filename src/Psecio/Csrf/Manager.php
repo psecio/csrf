@@ -83,7 +83,7 @@ class Manager
         // Generate the code with the provided method
         $typeNs = '\\Psecio\\Csrf\\Token\\'.ucwords(strtolower($type));
         if (!class_exists($typeNs)) {
-            throw new \Exception('Cannot generate token with generator type: '.$type);
+            throw new \InvalidArgumentException('Cannot generate token with generator type: '.$type);
         }
 
         $generator = new $typeNs();
@@ -133,8 +133,7 @@ class Manager
     public function verify($token)
     {
         // first, split off our hash
-        $key = substr($token, 0, 64);
-        $hash = substr($token, 64);
+        list($key, $hash) = $this->splitToken($token);
 
         // Now look through our storage and check that we have matches in all
         $result = true;
@@ -148,5 +147,19 @@ class Manager
         }
 
         return $result;
+    }
+
+    /**
+     * Split the token into key and hash value
+     *
+     * @param string $token Token value
+     * @return array Set of data with [key, hash]
+     */
+    public function splitToken($token)
+    {
+        return [
+            substr($token, 0, 64),
+            substr($token, 64)
+        ];
     }
 }
